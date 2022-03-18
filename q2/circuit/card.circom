@@ -18,7 +18,8 @@ template Main() {
     suiteEqual.in[0] <== suite1;
     suiteEqual.in[1] <== suite2;
     isSuiteEqual <== suiteEqual.out;
-
+    
+    // check for suite being equal
     isSuiteEqual === 1;
 
     // hash the salt & suite
