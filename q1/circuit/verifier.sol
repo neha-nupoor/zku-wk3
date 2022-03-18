@@ -253,3 +253,36 @@ contract Verifier {
         }
     }
 }
+
+contract Location {
+    struct LocationData {
+        int64 x1;
+        int64 y1;
+        int64 x2;
+        int64 y2;
+        int64 x3;
+        int64 y3;
+        int64 energy;
+    }
+
+    mapping(address => LocationData) public locations; 
+    Verifier private verifierContract;
+    
+    constructor() {
+        verifierContract = new Verifier();
+    }
+
+    function verifyLocationProof(uint[2] memory a,
+            uint[2][2] memory b,
+            uint[2] memory c,
+            uint[1] memory input) public view  {
+        require(verifierContract.verifyProof(a,b,c,input), "Location incorrect");
+        // not updating the location here, since the movement is in a triangle,
+        // essentially leading us to the starting point.
+        // however, in ideal scenario, we will update the location against the user's address here.
+
+        // updateLocation(msg.sender, input);
+    }
+}
+
+
