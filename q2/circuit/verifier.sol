@@ -296,6 +296,8 @@ contract Card {
         // require(mimcHashNewCard == input[2]); 
         // where, [input[2] is the hash of card2, which is an output of the circuit]
         
-        
+        // note: Ideally, sha256 hash should be calculated which is evm friendly, in both contract and circuit.
+        // this was covered in the last assignment in tornado cash question.
+        // Since I have used mimcSponge in the circuit, I am suggesting mimcSponge here.
     }
 }
