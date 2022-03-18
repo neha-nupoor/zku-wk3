@@ -1,12 +1,3 @@
-/*
-    Prove: I know (x1,y1,x2,y2,p2,r2,distMax) such that:
-    - x2^2 + y2^2 <= r^2
-    - perlin(x2, y2) = p2
-    - (x1-x2)^2 + (y1-y2)^2 <= distMax^2
-    - MiMCSponge(x1,y1) = pub1
-    - MiMCSponge(x2,y2) = pub2
-*/
-
 include "../../node_modules/circomlib/circuits/mimcsponge.circom";
 include "../../node_modules/circomlib/circuits/comparators.circom";
 
@@ -115,6 +106,11 @@ template Main() {
     triangleCheck.y3 <== y3;
     triangleCheck.out === 0;
 
+    // No output is returned here for this particular circuit.
+    // This is because, we are moving in a triangle, and end up at the starting point.
+    
+    // Ideally, the output shall be the new location of the user, which will be passed to the contract.
+    // The new coordinate will be stored in the smart contract as the player's new location.
 }
 
 component main = Main();
